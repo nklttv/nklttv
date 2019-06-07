@@ -1,4 +1,5 @@
-#pragma once
+#include <stdio.h>
+
 class money
 {
 private:
@@ -11,5 +12,5 @@ public:
 	money operator+(money& plusTime);
 	money operator-(money& plusTime);
 	money operator*(const int& plusTime);
-	void print();
+	void print(){printf("%d : %d\n", (int)rubley, (int)kopeek);};
 };

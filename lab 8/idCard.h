@@ -1,11 +1,5 @@
 #pragma once
 #include <string>
-#include "stdafx.h"
-#include <iostream>
-using namespace std;
-
-#include <string>
-#include "stdafx.h"
 #include <iostream>
 
 
@@ -18,10 +12,26 @@ private:
     string dateExpire;
 public:
 	
-	void setNumber(int newNumber);
-	int getNumber();
-	void setDateExpire(string newDateExpire);
-	string getDateExpire();	  
-	void print();
+	void setNumber(int newNumber)
+	{
+	this->number=newNumber;
+	return;
+	};
+	int getNumber()
+	{
+	return this->number;
+	};
+	void setDateExpire(string newDateExpire){
+	this->dateExpire=newDateExpire;
+	return;
+	};
+	string getDateExpire(){
+	return this->dateExpire;
+	};	  
+	void print(){
+	cout <<"id:  "<<this->number << endl;
+	return;
+	};
 };
+
 		

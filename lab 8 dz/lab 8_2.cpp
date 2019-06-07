@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include "money.h"
-#include "stdafx.h
 
 
 int main()

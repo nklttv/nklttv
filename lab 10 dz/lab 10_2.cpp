@@ -1,61 +1,43 @@
 ﻿#include <iostream>
+#include <stdio.h>
 #include "money.h"
 
-const int n = 10;
-
-void printArrayTime(money Array[])
-{
-	for (int i = 0; i < n; i++)
-	{
-		Array[i].print();
-	}
-}
 
 int main()
 {
-	money one;
-	one.set(5, 120);
-	money two;
-	two.set(4, 30);
+	money one; 	one.set(5, 120);
+	money two;	two.set(4, 30);
 	money three = one + two;
 	three.print();
-	three = one - two;
-	three.print();
-	three = one * 3;
-	three.print();
-	if (one < two)
-		std::cout << "one<two = true" << std::endl;
-	else std::cout << "one<two = false" << std::endl;
-	if (one <= two)
-		std::cout << "one<=two = true" << std::endl;
-	else std::cout << "one<=two = false" << std::endl;
-	if (one > two)
-		std::cout << "one>two = true" << std::endl;
-	else std::cout << "one>two = false" << std::endl;
-	if (one >= two)
-		std::cout << "one>=two = true" << std::endl;
-	else std::cout << "one>=two = false" << std::endl;
-	if (one == two)
-		std::cout << "one==two = true" << std::endl;
-	else std::cout << "one==two = false" << std::endl;
+	if (one < two) printf("one<two = true\n");
+	else printf("one<two = false\n");
+	if (one <= two) printf("one<=two = true\n");
+	else printf("one<=two = false\n");
+	if (one > two) printf("one>two = true\n");
+	else printf("one>two = false\n");
+	if (one >= two) printf("one>=two = true\n");
+	else printf("one>=two = false\n");
+	if (one == two) printf("one==two = true\n");
+	else printf("one==two = false\n");
 
-	money array[n];
-	for (int i = 0; i < n; i++) {
-		array[i].set(std::rand() % 100, std::rand() % 100);
+	money arr[10];
+	for (int i = 0; i < 10; i++) {
+		arr[i].set(std::rand() % 100, std::rand() % 100);
+		arr[i].print();
 	}
-	printArrayTime(array);
-	std::cout << std::endl;
 	for (int i = 1; i < n; ++i)
 	{
 		for (int j = 0; j < n - i; j++)
 		{
-			if (array[j] < array[j + 1])
+			if (arr[j] < arr[j + 1])
 			{
-				money temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
+				money val = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = val;
 			}
 		}
 	}
-	printArrayTime(array);
+	for (int i = 0; i < 10; i++) {
+		arr[i].print();
+	}
 }

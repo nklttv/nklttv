@@ -1,43 +1,34 @@
 #include "money.h"
 #include <iostream>
-#include "stdafx.h"
+#include <stdio.h>
 
 void money::set(int newRubley, int newKopeek)
 {
 	rubley = newRubley;
-	if (newKopeek > 100) {
-		int setKopeek = newKopeek % 100;
-		rubley += newKopeek / 100;
-		kopeek = setKopeek;
+	while (newKopeek > 100) {
+		rubley++;
+		newKopeek -=100;
 	}
-	else
-		kopeek = newKopeek;
+	kopeek = newKopeek;
 }
 
 void money::addMoney(money & someMoney)
 {
 	rubley += someMoney.rubley;
-	kopeek += someMoney.kopeek;
-	if (kopeek >= 100)
-	{
+	kopeek = someMoney.kopeek >= 100 ? someMoney.kopeek - 100 : someMoney.kopeek;
+	if(someMoney.kopeek>=100)
 		rubley++;
-		kopeek -= 100;
-	}
 }
 
 void money::substractMoney(money & someMoney)
 {
 	rubley -= someMoney.rubley;
-	int pence = kopeek - someMoney.kopeek;
-	if (pence < 0) {
+	int pence = (kopeek - someMoney.kopeek)<0 ? 100+(kopeek - someMoney.kopeek) : kopeek - someMoney.kopeek;
+	if ((kopeek - someMoney.kopeek)<0)
 		rubley--;
-		kopeek = 100 + pence;
-	}
-	else
-		kopeek = pence;
 }
 
 void money::print()
 {
-	std::cout << rubley << ", " << (int)kopeek << std::endl;
+	printf("%d, %d \n", rubley, (int)kopeek );
 }

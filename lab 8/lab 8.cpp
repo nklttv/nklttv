@@ -1,80 +1,105 @@
-// lab 8pp.cpp : Defines the entry point for the console application.
-//
-#include "stdafx.h"
+#include <string>
+#include <iostream>
 #include "idCard.h"
 #include "Employee.h"
-#include "Department.h"
 
+class Department
+{
+private:
+	string name;
+	Employee* head;
+public:
+   void setName(string newName);
+   string getName();
+   void setHead(Employee* newHead);
+   Employee* getHead();
+   void print();
+};
+
+void Department::setName(string newName)
+{
+	this->name=newName;
+	return;
+}
+
+void Department::setHead(Employee* newHead)
+{
+	this->head=newHead;
+	return;
+}
+
+void Department::print()
+{
+	cout <<" Departament: "<<this->name << " Glava: "<< this->head->getPosition() << endl;
+		this->head->print();
+	return;
+}
+
+string Department::getName()
+{
+	return (this->name);
+}
+
+Employee* Department::getHead()
+{
+	return this->head;
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
 	Department dA, dB;
-	Employee Ivan, Petr, Sidor, Mihail, Alexandr, Evgenia;
-	idCard id101;
-	idCard id5016;
-	idCard id5018;
-	idCard id201;
-	idCard id5022;
-	idCard id5019;
-	
-	id101.setNumber(101);
-	id5016.setNumber(5016);
-	id5018.setNumber(5018);
-	id201.setNumber(201);
-	id5022.setNumber(5022);
-	id5019.setNumber(5019);
 
 	dA.setName("Departament razrabotka");
 	dA.setHead(&Ivan);
-	
-	Ivan.setPosition("Glava departamenta");
-	Ivan.setDepartment(&dA);
-	
-	Ivan.setRoom(101);
-	Ivan.setidCard(&id101);
-	
-	Petr.setPosition("Glavnuy razrabotnik");
-	Petr.setDepartment(&dA);
-	
-	Petr.setRoom(102);
-	Petr.setidCard(&id5016);
-	
-	Sidor.setPosition("Razrabotnik");
-	Sidor.setDepartment(&dA);
-	
-	Sidor.setRoom(102);
-	Sidor.setidCard(&id5018);
-
 	dB.setName("Departament Administrasii");
 	dB.setHead(&Mihail);
 
+	Employee Ivan, Petr, Sidor, Mihail, Alexandr, Evgenia;
+
+	Ivan.setPosition("Glava departamenta");
+	Ivan.setDepartment(&dA);
+	Petr.setPosition("Glavnuy razrabotnik");
+	Petr.setDepartment(&dA);
+	Sidor.setPosition("Razrabotnik");
+	Sidor.setDepartment(&dA);
 	Mihail.setPosition("Director");
 	Mihail.setDepartment(&dB);
-	
-	Mihail.setRoom(201);
-	Mihail.setidCard(&id201);
-
 	Alexandr.setPosition("Zamestitel directora");
 	Alexandr.setDepartment(&dB);
-	
-	Alexandr.setRoom(201);
-	Alexandr.setidCard(&id5022);
-
 	Evgenia.setPosition("Glavnuy buhgalter");
 	Evgenia.setDepartment(&dB);
+
+	idCard id101, id5016, id5018, idCard id201,id5022, id5019;
 	
-	Evgenia.setRoom(202);
+	id101.setNumber(101);
+	Ivan.setRoom(id101.getNumber());
+	Ivan.setidCard(&id101);
+	
+	id5016.setNumber(5016);
+	Petr.setRoom(id5016.getNumber());
+	Petr.setidCard(&id5016);
+	
+
+	id5018.setNumber(5018);
+	Sidor.setRoom(id5018.getNumber());
+	Sidor.setidCard(&id5018);
+
+	id201.setNumber(201);
+	Mihail.setRoom(id201.getNumber());
+	Mihail.setidCard(&id201);
+
+	id5022.setNumber(5022);
+	Alexandr.setRoom(id5022.getNumber());
+	Alexandr.setidCard(&id5022);
+
+	id5019.setNumber(5019);
+	Evgenia.setRoom(id5019.getNumber());
 	Evgenia.setidCard(&id5019);
 
-	Ivan.print();
-	Petr.print();
-	Sidor.print();
-	Mihail.print();
-	Alexandr.print();
-	Evgenia.print();
+	Ivan.print(); Petr.print(); Sidor.print();
+	Mihail.print(); Alexandr.print(); Evgenia.print();
 	
-	dA.print();
-	dB.print();
+	dA.print(); dB.print();
 	system("pause");
 	
 	return 0;

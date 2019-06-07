@@ -1,78 +1,49 @@
 #include "stdafx.h"
 #include "Time.h"
 #include <iostream>
-#include <stdio.h>
 using namespace std;
 
-void Time::setTime(long newhours, unsigned char newminutes)
-{ 
-	this->hours=newhours;
-	this->minutes=newminutes;
-	
-}
-long Time::gethours()
+Time Time::operator+ (Time & aTime)
 {
-	return this->hours;
-}
-unsigned char Time::getMinutes()
-{
- return this->minutes;
-}
-
-
-Time Time::operator+ (Time & plustime)
-{
-
 	Time result;
-	result.hours=this->hours+plustime.hours;
-    result.minutes=this->minutes+plustime.minutes;
+	result.hours=hours+aTime.hours;
+    result.minutes=minutes+aTime.minutes;
 	if (result.minutes>=60);
 	{
-   result.hours = result.hours+1 ;
-   result.minutes =  result.minutes-60;
- 
-return result; 
-
-	}
+   		result.hours = result.hours+1 ;
+   		result.minutes =  result.minutes-60;
+ 	}
+	return result; 
 }
 
-Time Time::operator- (Time & minustime)
+Time Time::operator- (Time & aTime)
 {
   
 	Time result;
-	result.hours=this->hours-minustime.hours;
-    
-	int m = minutes-minustime.minutes;
-	 
-   if (m<0)
+	result.hours=hours-aTime.hours;
+   	if ((minutes-aTime.minutes)<0){
+   		result.hours = result.hours- 1 ;
+   		result.minutes = (minutes-aTime.minutes) + 60; 
+   	}
+   	else 
+   		result.minutes = (minutes-aTime.minutes);
+	
+	return result; 
+}
+
+Time Time::operator* (int value)
+{
+
+	Time result;
+   	result.hours=hours*value;
+  	int m = minutes*value;
+  	while ((minutes*value)>60)
 	{
-   result.hours = result.hours- 1 ;
-   result.minutes = m + 60;
-  
-   }
-   else result.minutes = m;
-return result; 
-}
-
-Time Time::operator* (int multimes)
-{
-
-	Time result;
-   result.hours=hours*multimes;
-  int m = minutes*multimes;
-  if (m>60)
-	 {
-		 int addminutes = m % 60 ;
-		 int addhours = m / 60 ;
-    result.hours += addhours ;
-	result.minutes = addminutes;
-	   } 
-  else 
-	  result.minutes = m;
-	   return result; 
-}
-
-void Time::print()
-{
-	std::cout << hours << ":" << (int)minutes <<std::endl;
+    	result.hours++;
+		result.minutes-=60;
+	}
+	else 
+		result.minutes = m;
+	
+	return result; 
 }

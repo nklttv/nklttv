@@ -1,5 +1,6 @@
-class Employee;
-#pragma once
+#include <iostream>
+#include <stdio.h>
+#include <string>
 #include "Department.h"
 #include "idCard.h"
 
@@ -11,15 +12,15 @@ private:
 		   int room;
 		   Department * department;  
  public:
-            void setPosition(string newPosition);
-	       string getPosition();
-			void setidCard(idCard* newidCard);
-		    idCard* getidCard();
-		    void setRoom(int newRoom);
-			int getRoom();
-		    void setDepartment(Department* newDepartment);
-			Department* getDepartment();
-			void print();
+            void setPosition(string newPosition){ position=newPosition;	};
+	       	string getPosition(){ return position; };
+			void setidCard(idCard* newidCard) { card = newidCard; };
+		    idCard* getidCard(){ return card; };
+		    void setRoom(int newRoom){ room = newRoom; };
+			int getRoom(){ return room; };
+		    void setDepartment(Department* newDepartment) { department = newDepartment; };
+			Department* getDepartment(){ return department; };
+			void print(){ printf("Employee %s sidit %d ", position.c_str(), room); department->getName(); };
  };
 
 

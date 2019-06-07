@@ -1,4 +1,4 @@
-#pragma once
+#include <stdio.h>
 
 class money
 {
@@ -17,5 +17,5 @@ public:
 	bool operator>(money& Money);
 	bool operator>= (money & Money);
 	bool operator==(money& Money);
-	void print();
+	void print(){printf("%d : %d\n", (int)rubley, (int)kopeek);};
 };
